@@ -74,6 +74,7 @@ const [menuOpen, setMenuOpen] = useState(false);
       <a href='/Resume.pdf'
          target="_blank"
          rel="noopener noreferrer"
+         onClick={() => window.open('/Resume.pdf')}
          className='btn bg-white-50 text-black-50 mt-2 hidden sm:flex hover:bg-black-100 hover:text-white-50'>Resume</a>
 
 
