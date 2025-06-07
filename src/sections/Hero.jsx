@@ -59,7 +59,7 @@ const Hero = () => {
 
 
   return (
-    <section id='home' className='h-screen flex flex-col justify-center items-center'>
+    <section id='home' className='h-screen flex flex-col justify-center items-center overflow-hidden'>
         <video 
         src="/Hero-Vid.mp4" 
         autoPlay 

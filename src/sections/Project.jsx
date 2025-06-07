@@ -69,7 +69,7 @@ const Project = () => {
     }, []);
 
   return (
-    <section id='project' className='relative pt-32'>
+    <section id='project' className='relative pt-32 overflow-hidden'>
         <h1 ref={h1Ref} className='flex-center text-5xl font-bold text-white-50 whitespace-pre-line'>See My Work!</h1>
         <div className='flex flex-col lg:flex-row gap-8 h-full m-auto px-8 lg:px-16 py-8 lg:py-16'>
 

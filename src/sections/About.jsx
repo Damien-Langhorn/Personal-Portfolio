@@ -94,7 +94,7 @@ const About = () => {
 
 
   return (
-    <section id='about' className='h-screen relative flex flex-col justify-center items-center'>
+    <section id='about' className='h-screen relative flex flex-col justify-center items-center overflow-hidden'>
       <h1 ref={h1Ref} className='text-white-50 text-5xl flex-center font-bold'>About Me</h1> 
 
       <div className='flex flex-col lg:flex-row pt-16  justify-center items-center gap-8 px-10'>

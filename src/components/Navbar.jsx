@@ -26,6 +26,11 @@ const Navbar = () => {
 
 const [menuOpen, setMenuOpen] = useState(false);
 
+
+  const handleOpenResume = () => {
+    window.open("/Resume.pdf", "_blank");
+  };
+
   return (
   
     <div ref={navRef} className='nav-container flex left-1/20 justify-between gap-8 fixed top-0 z-50 bg-black-50 text-white-50 px-4 rounded-2xl shadow-lg'>
@@ -71,11 +76,9 @@ const [menuOpen, setMenuOpen] = useState(false);
         </ul>
       </div>  
        
-      <a href='/Resume.pdf'
-         target="_blank"
-         rel="noopener noreferrer"
-         onClick={() => window.open('/Resume.pdf')}
-         className='btn bg-white-50 text-black-50 mt-2 hidden sm:flex hover:bg-black-100 hover:text-white-50'>Resume</a>
+      <button onClick={handleOpenResume}
+         className='btn bg-white-50 text-black-50 mt-2 hidden sm:flex hover:bg-black-100 hover:text-white-50'>
+          Resume</button>
 
 
       {/* Mobile Nav */}

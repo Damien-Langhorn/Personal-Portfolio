@@ -121,7 +121,7 @@ const handleSubmit = async (e) => {
 
 
   return (
-    <section id='contact' className='relative h-screen flex flex-col justify-center items-center'>
+    <section id='contact' className='relative h-screen flex flex-col justify-center items-center overflow-hidden'>
       <h1 ref={h1Ref} className='text-white-50 font-bold text-5xl flex-center'>Contact Me</h1>
     
         <div ref={formRef} className='flex flex-col pt-8 px-8'>
