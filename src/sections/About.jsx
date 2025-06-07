@@ -85,7 +85,8 @@ const About = () => {
     }   
   });
 
-
+    ScrollTrigger.refresh();
+    
     return () => {
     split.revert(); // Clean up SplitText spans
   };
@@ -119,7 +120,7 @@ const About = () => {
               ref={el => techStackRef.current[i] = el}
               className="badge bg-black-50 border-black-50 h-15 w-full sm:w-[50vw] text-2xl text-white-50 flex items-center gap-2"
             >
-              <img className="size-[2em]" src={tech.src} alt={`${tech.label} Icon`} />
+              <img loading="lazy" className="size-[2em]" src={tech.src} alt={`${tech.label} Icon`} />
               {tech.label}
               </div>
           ))}

@@ -18,13 +18,11 @@ const Project = () => {
 
     useGSAP(() => {
         const split = new SplitText(h1Ref.current, { type: "words", wordsClass: "split-text-word" });
-        gsap.fromTo(
-            split.words,
-            { y: 100, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                ease: "sine.inOut",
+        
+        gsap.from(split.words, {
+            y: 100,
+            opacity: 0,
+            ease: "sine.inOut",
                 scrollTrigger: {
                     trigger: h1Ref.current,
                     start: "top 80%",
@@ -32,39 +30,37 @@ const Project = () => {
                     scrub: 0.5,
                 }   
             }
+        
         );
 
         [project1Ref, project2Ref, project3Ref].forEach((ref) => {
-        gsap.fromTo(
-        ref.current,
-            { opacity: 0,
-                 y: 100, 
-                 scale: 0,
-                 rotationX: "180",
-                 rotationY: "45",
-                 rotationZ: "100",},
-            {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                rotationX: 0,
-                rotationY: 0,
-                rotationZ: 0,
-                autoAlpha: 1,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: ref.current,
-                    start: "top 100%",
-                    end: "top 95%",
-                    scrub: 0.5,
+        gsap.from(ref.current, {
+            opacity: 0,
+            y: 100,
+            scale: 0,
+            rotationX: "180",
+            rotationY: '45',
+            rotationZ: "100",
+            autoAlpha: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ref.current,
+                start: "top 80%",
+                end: "top 80%",
+                scrub: 0.5,
                 }
             }
         );
+
+        
     });
+
+    ScrollTrigger.refresh();
 
     return () => {
         split.revert(); // Clean up SplitText spans
     };
+
     
     }, []);
 
@@ -78,6 +74,7 @@ const Project = () => {
             <div ref={project1Ref} className="card bg-black-50 w-full lg:h-[70vh] mt-10">
                 <figure>
                     <img
+                    loading="lazy"
                     className='w-full h-full object-cover object-top'
                     src="/Project-1.png"
                     alt="Featured Project" />
@@ -104,6 +101,7 @@ const Project = () => {
             <div ref={project2Ref} className="pointer-events-none card bg-black-50 w-full lg:w-[40vw] lg:h-[60vh]">
                 <figure>
                     <img
+                    loading="lazy"
                     className='w-full h-full object-cover object-top'
                     src="/Placeholder.jpg"
                     alt="Project 2"/>
@@ -120,6 +118,7 @@ const Project = () => {
             <div ref={project3Ref} className="pointer-events-none card bg-black-50 w-full lg:w-[40vw] lg:h-[60vh]">
                 <figure>
                     <img
+                    loading='lazy'
                     className='w-full h-full object-cover object-top'
                     src="/Placeholder.jpg"
                     alt="Project 3"/>
