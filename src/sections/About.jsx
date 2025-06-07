@@ -80,7 +80,7 @@ const About = () => {
     scrollTrigger: {
         trigger: h2Ref.current,
         start: "top 70%",
-        end: "top 50%",
+        end: "top 55%",
         scrub: 0.5,
     }   
   });
@@ -100,7 +100,7 @@ const About = () => {
       <div className='flex flex-col lg:flex-row pt-16  justify-center items-center gap-8 px-10'>
 
         <div className='flex'>
-        <p ref={textRef} className='text-white-50 text-xl lg:text-2xl px-10 text-balance text-center whitespace-pre-line'>I'm a developer who focuses on creating React web applications.
+        <p ref={textRef} className='text-white-50 text-[12px] sm:text-xl lg:text-2xl px-10 text-balance text-center whitespace-pre-line'>I'm a developer who focuses on creating React web applications.
             Whether it's building a new feature, fixing bugs, or optimizing performance. I strive to deliver high-quality code and user experiences.
         </p>
         </div>
@@ -117,7 +117,7 @@ const About = () => {
             <div
               key={tech.label}
               ref={el => techStackRef.current[i] = el}
-              className="badge bg-black-50 h-15 w-[50vw] text-2xl flex items-center gap-2"
+              className="badge bg-black-50 border-black-50 h-15 w-full sm:w-[50vw] text-2xl text-white-50 flex items-center gap-2"
             >
               <img className="size-[2em]" src={tech.src} alt={`${tech.label} Icon`} />
               {tech.label}

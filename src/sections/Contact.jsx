@@ -128,12 +128,12 @@ const handleSubmit = async (e) => {
           <div className='bg-black-50 rounded-lg p-4 w-[70vw] max-w-200 m-auto'>
             <form onSubmit={handleSubmit} autoComplete="on">
               <fieldset className="fieldset">
-                <legend className="fieldset-legend">Name</legend>
-                <input autoComplete="name" value={formData.name} onChange={handleChange} name="name" type="text" className="input w-full" placeholder="Type here" required />
-                <legend className="fieldset-legend">Email</legend>
-                <input autoComplete="email" value={formData.email} onChange={handleChange} name="email" type="email" className="input w-full" placeholder="Type here" required />
-                <legend className="fieldset-legend">Send me a message</legend>
-                <textarea autoComplete="off" value={formData.message} onChange={handleChange} name="message" className="textarea h-24 w-full" placeholder="Enter here" required></textarea>
+                <legend className="fieldset-legend text-white-50">Name</legend>
+                <input autoComplete="name" value={formData.name} onChange={handleChange} name="name" type="text" className="input w-full bg-[#1d232a] text-[#838c93] border-[#838c93]" placeholder="Type here" required />
+                <legend className="fieldset-legend text-white-50">Email</legend>
+                <input autoComplete="email" value={formData.email} onChange={handleChange} name="email" type="email" className="input w-full bg-[#1d232a] text-[#838c93] border-[#838c93]" placeholder="Type here" required />
+                <legend className="fieldset-legend text-white-50">Send me a message</legend>
+                <textarea autoComplete="off" value={formData.message} onChange={handleChange} name="message" className="textarea h-24 w-full bg-[#1d232a] text-[#838c93] border-[#838c93]" placeholder="Enter here" required></textarea>
                 <button disabled={loading} className='btn bg-white-50 text-black-50 w-[25%] mx-auto mt-2 hover:bg-black-100 hover:text-white-50'>{loading ? 'Sending...' : 'Send'}</button>
               </fieldset>
             </form>

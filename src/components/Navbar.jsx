@@ -3,7 +3,6 @@ import { useState, useRef} from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-    
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 // ScrollSmoother requires ScrollTrigger
 import { ScrollSmoother } from "gsap/ScrollSmoother";
@@ -94,7 +93,7 @@ const [menuOpen, setMenuOpen] = useState(false);
             <a href='#contact' to='/Contact' onClick={() => setMenuOpen(false)}>Contact</a>
           </li>
           <li>
-            <a href='' className='text-white-50' onClick={() => setMenuOpen(false)}>Resume</a>
+            <a href='/Resume.pdf' target='_blank' rel='noopener noreferrer' download={"Damien's Resume"} className='text-white-50' onClick={() => setMenuOpen(false)}>Resume</a>
           </li>
         </ul>
       )}

@@ -55,7 +55,7 @@ const Project = () => {
                 scrollTrigger: {
                     trigger: ref.current,
                     start: "top 100%",
-                    end: "top 85%",
+                    end: "top 95%",
                     scrub: 0.5,
                 }
             }
@@ -69,7 +69,7 @@ const Project = () => {
     }, []);
 
   return (
-    <section id='project' className='relative pt-32 overflow-hidden'>
+    <section id='project' className='relative pt-32 flex flex-col justify-center items-center overflow-hidden'>
         <h1 ref={h1Ref} className='flex-center text-5xl font-bold text-white-50 whitespace-pre-line'>See My Work!</h1>
         <div className='flex flex-col lg:flex-row gap-8 h-full m-auto px-8 lg:px-16 py-8 lg:py-16'>
 
@@ -83,8 +83,8 @@ const Project = () => {
                     alt="Featured Project" />
                 </figure>
                 <div className="card-body">
-                    <h2 className="card-title">Innovative Tech</h2>
-                    <p>A tech company project based off an AI generated wireframe.
+                    <h2 className="card-title text-white-50">Innovative Tech</h2>
+                    <p className='text-[12px] text-white-50'>A tech company project based off an AI generated wireframe.
                         The purpose of this project was to create the website exactly as the wireframe
                         intened with some desgin changes as I saw fit.
                     </p>

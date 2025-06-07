@@ -69,12 +69,12 @@ const Hero = () => {
         <div className="fixed top-0 left-0 w-full h-full bg-black/50 z-0"></div>
         <div className="hero bg-base-200 min-h-screen">
           <div className="hero-content flex-col lg:flex-row-reverse px-10 pt-20 sm:pt-0">
-            <div ref={cardRef} className="mockup-window bg-[url('/Bg-Window.jpg')] bg-cover bg-center border border-white-50 w-full shadow-lg shadow-white-50">
+            <div ref={cardRef} className="mockup-window bg-[url('/Bg-Window.jpg')] bg-cover bg-center border border-white-50 w-full h-[250px] sm:h-full shadow-lg shadow-white-50">
               
-              <h1 ref={h1Ref} className="flex justify-center pt-20 border-t border-white-50 h-80 text-7xl font-bold">Welcome!</h1>
+              <h1 ref={h1Ref} className="flex justify-center pt-10 sm:pt-20 border-t border-white-50 h-80 text-5xl sm:text-7xl text-white-50 font-bold">Welcome!</h1>
             </div>
             <div>
-              <h1 ref={textRef} className="text-3xl sm:text-5xl font-bold text-center text-balance pt-4">Hi my name is Damien. A Frontend Developer
+              <h1 ref={textRef} className="text-2xl sm:text-5xl font-bold text-center text-balance text-white-50 pt-4">Hi my name is Damien. A Frontend Developer
                 based in NYC.
               </h1>
             </div>
