@@ -71,7 +71,10 @@ const [menuOpen, setMenuOpen] = useState(false);
         </ul>
       </div>  
        
-      <button className='btn bg-white-50 text-black-50 mt-2 hidden sm:flex hover:bg-black-100 hover:text-white-50'>Resume</button>
+      <a href='/Resume.pdf'
+         target="_blank"
+         rel="noopener noreferrer"
+         className='btn bg-white-50 text-black-50 mt-2 hidden sm:flex hover:bg-black-100 hover:text-white-50'>Resume</a>
 
 
       {/* Mobile Nav */}
