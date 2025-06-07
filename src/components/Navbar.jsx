@@ -16,10 +16,9 @@ const Navbar = () => {
     gsap.from(navRef.current, {
       opacity: 0,
       y: -50,
-      duration: 1,
       ease: "power4.Out",
       stagger: 0.07,
-      delay: 0.5,
+      delay: 2,
     });
   }, []);
 
@@ -49,57 +48,45 @@ const [menuOpen, setMenuOpen] = useState(false);
       <div className='hidden sm:flex'>
         <ul className='flex flex-row gap-8 m-auto'>
           <li>
-            <a 
-              href='#home'
-              className={({ isActive }) => 
-                isActive ? "text-blue-500 font-bold underline underline-offset-8 decoration-3" : "text-gray-500"
-                }
-                end>Home</a>
+            <a href='#home'>
+              <span className='hover-underline-animation'>Home</span>
+            </a>
           </li>
           <li>
-            <a 
-              href='#project'
-              className={({ isActive }) =>
-                isActive ? "text-blue-500 font-bold underline underline-offset-8 decoration-3" : "text-gray-500"
-                }
-                end>Project</a>
+            <a href='#project'>
+              <span className='hover-underline-animation'>Projects</span>
+            </a>
           </li>
           <li>
-            <a 
-              href='#about'
-              className={({ isActive }) =>
-                isActive ? "text-blue-500 font-bold underline underline-offset-8 decoration-3" : "text-gray-500"
-                }
-                end>About</a>
+            <a href='#about'>
+              <span className='hover-underline-animation'>About</span>
+            </a>
           </li>
           <li>
-            <a 
-              href='#contact'
-              className={({ isActive }) =>
-                isActive ? "text-blue-500 font-bold underline underline-offset-8 decoration-3" : "text-gray-500"
-                }
-                end>Contact</a>
+            <a href='#contact'>
+              <span className='hover-underline-animation'>Contact</span>
+            </a>
           </li>
         </ul>
       </div>  
        
-      <button className='btn bg-white-50 text-black-50 mt-2 hidden sm:flex'>Resume</button>
+      <button className='btn bg-white-50 text-black-50 mt-2 hidden sm:flex hover:bg-black-100 hover:text-white-50'>Resume</button>
 
 
       {/* Mobile Nav */}
       {menuOpen && (
         <ul className='absolute top-14 w-[84vw]  bg-black-50 flex flex-col items-center pb-4 gap-4 shadow-lg lg:hidden z-50'>
           <li>
-            <a href='#home' onClick={() => setMenuOpen(false)} className={({ isActive }) => isActive ? "text-blue-500 font-bold underline underline-offset-8 decoration-3" : "text-gray-500"} end>Home</a>
+            <a href='#home' onClick={() => setMenuOpen(false)}>Home</a>
           </li>
           <li>
-            <a href='#project' to='/Project' onClick={() => setMenuOpen(false)} className={({ isActive }) => isActive ? "text-blue-500 font-bold underline underline-offset-8 decoration-3" : "text-gray-500"} end>Project</a>
+            <a href='#project' to='/Project' onClick={() => setMenuOpen(false)}>Project</a>
           </li>
           <li>
-            <a href='#about' to='/About' onClick={() => setMenuOpen(false)} className={({ isActive }) => isActive ? "text-blue-500 font-bold underline underline-offset-8 decoration-3" : "text-gray-500"} end>About</a>
+            <a href='#about' to='/About' onClick={() => setMenuOpen(false)}>About</a>
           </li>
           <li>
-            <a href='#contact' to='/Contact' onClick={() => setMenuOpen(false)} className={({ isActive }) => isActive ? "text-blue-500 font-bold underline underline-offset-8 decoration-3" : "text-gray-500"} end>Contact</a>
+            <a href='#contact' to='/Contact' onClick={() => setMenuOpen(false)}>Contact</a>
           </li>
           <li>
             <a href='' className='text-white-50' onClick={() => setMenuOpen(false)}>Resume</a>

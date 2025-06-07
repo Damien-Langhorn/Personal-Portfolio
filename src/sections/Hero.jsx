@@ -1,50 +1,64 @@
 import { useRef } from "react";
 import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
-    
+import { useGSAP } from "@gsap/react"; 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 // ScrollSmoother requires ScrollTrigger
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+import SplitText from "gsap/SplitText";
 
-gsap.registerPlugin(useGSAP,ScrollTrigger,ScrollSmoother);
+
+gsap.registerPlugin(useGSAP,ScrollTrigger,ScrollSmoother,SplitText);
 
 const Hero = () => {
-  const lettersRef = useRef([]);
+  const h1Ref = useRef([]);
   const cardRef = useRef();
   const textRef = useRef();
 
   useGSAP(() => {
-    gsap.from(lettersRef.current, {
-      opacity: 0,
-      y: -50,
-      duration: 1,
-      ease: "power4.Out",
-      stagger: 0.07,
-      delay: 0.5,
-    });
+     const split = new SplitText(h1Ref.current, { type: "chars" });
+     gsap.from(split.chars, { 
+      x: 100,
+      y: -100,
+      rotation: "random([-30, 30])",
+      ease: "sine.in",
+      autoAlpha: 0,
+      stagger: {
+        amount: 1,
+        
+      }
+      });
 
     gsap.from(cardRef.current, {
       opacity: 0,
-      x: 50,
+      rotationX: "180",
+      rotationY: "45",
+      rotationZ: "100",
+      autoAlpha: 0,
       duration: 1,
-      ease: "power4.Out",
+
     });
 
-    gsap.from(textRef.current, {
-      opacity: 0,
-      x: -50,
-      duration: 1,
-      ease: "power4.Out",
-      delay: 0.5,
-    });
+     const split2 = new SplitText(textRef.current, { type: "chars", smartWrap:true });
+     gsap.from(split2.chars, { 
+      yPercent: "random([-100, 100])",
+      rotation: "random([-30, 30])",
+      ease: "sine.in",
+      autoAlpha: 0,
+      delay: 0.7,
+      mask: "chars",
+      stagger: {
+        amount: 1,
+        from: "random",
+      }
+      });
   }, []);
 
-  const welcomeText = "Welcome!";
+ 
 
 
 
   return (
-    <section id='home' className='h-screen'>
+    <section id='home' className='h-screen flex flex-col justify-center items-center'>
         <video 
         src="/Hero-Vid.mp4" 
         autoPlay 
@@ -55,17 +69,8 @@ const Hero = () => {
         <div className="hero bg-base-200 min-h-screen">
           <div className="hero-content flex-col lg:flex-row-reverse px-10 pt-20 sm:pt-0">
             <div ref={cardRef} className="mockup-window bg-[url('/Bg-Window.jpg')] bg-cover bg-center border border-white-50 w-full shadow-lg shadow-white-50">
-              <h1 className="flex justify-center pt-20 border-t border-white-50 h-80 text-7xl font-bold">
-                {welcomeText.split("").map((char, i) => (
-                <span
-                  key={i}
-                  ref={el => lettersRef.current[i] = el}
-                  style={{ display: "inline-block" }}
-                >
-                  {char}
-                </span>
-              ))}
-                </h1>
+              
+              <h1 ref={h1Ref} className="flex justify-center pt-20 border-t border-white-50 h-80 text-7xl font-bold">Welcome!</h1>
             </div>
             <div>
               <h1 ref={textRef} className="text-3xl sm:text-5xl font-bold text-center text-balance pt-4">Hi my name is Damien. A Frontend Developer

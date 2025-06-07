@@ -1,12 +1,12 @@
 import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-    
+import SplitText from "gsap/SplitText";  
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 // ScrollSmoother requires ScrollTrigger
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 
-gsap.registerPlugin(useGSAP,ScrollTrigger,ScrollSmoother);
+gsap.registerPlugin(useGSAP,ScrollTrigger,ScrollSmoother,SplitText);
 
 
 const About = () => {
@@ -16,64 +16,90 @@ const About = () => {
   const techStackRef = useRef([]);
 
   useGSAP(() => {
-    gsap.from(h1Ref.current, {
-            opacity: 0,
-            scale: 0.1,
-            duration: 1,
-            ease: "power4.Out",
-            scrollTrigger: {
-                trigger: h1Ref.current,
-                start: "top 80%",
-            }
-        });
+    const split = new SplitText(textRef.current, {
+    type: "chars",
+    smartWrap: true,
+    wordsClass: "split-text-word",
+    charsClass: "split-text-char",
+    autoSplit: true
+  });
 
-       gsap.from(textRef.current, {
-            opacity: 0,
-            x: -50,
-            duration: 1,
-            ease: "power4.Out",
-            delay: 0.4,
-            scrollTrigger: {
-                trigger: h1Ref.current,
-                start: "top 80%",
-            }
-        }); 
+  
 
-        gsap.from(h2Ref.current, {
-            opacity: 0,
-            scale: 0.1,
-            duration: 1,
-            ease: "power4.Out",
-            delay: 0.2,
-            scrollTrigger: {
-                trigger: h1Ref.current,
-                start: "top 80%",
-            }
-        });
+  gsap.from(h1Ref.current, {
+    y: 100,
+    opacity: 0,
+    scale: 0.1,
+    ease: "sine.inOut",
+    scrollTrigger: {
+        trigger: h1Ref.current,
+        start: "top 95%",
+        end: "top 60%",
+        scrub: 0.5,
+    }   
+  })
 
-        gsap.from(techStackRef.current, {
-          opacity: 0,
-          x: 50,
-          duration: 1,
-          stagger: 0.15,
-          ease: "power4.out",
-          delay: 0.4,
-          scrollTrigger: {
-            trigger: h1Ref.current,
-            start: "top 80%",
-      }
-    });
+  gsap.from(split.chars, {
+    yPercent: "random([-100, 100])",
+    rotation: "random(-30, 30)",
+    autoAlpha: 0,
+    ease: "sine.inOut",
+    stagger: {
+      amount: 0.5,
+      from: "random",
+    },
+    scrollTrigger: {
+        trigger: textRef.current,
+        start: "top 70%",
+        end: "top 60%",
+        scrub: 0.5,
+    }   
+  })
+
+  gsap.from(h2Ref.current, {
+    y: 100,
+    opacity: 0,
+    scale: 0.1,
+    ease: "power2.inOut",
+    delay: 0.5,
+    duration: 1,
+    scrollTrigger: {
+        trigger: h2Ref.current,
+        start: "top 95%",
+        end: "top 60%",
+        scrub: 0.5,
+    }   
+  })
+  gsap.from(techStackRef.current, {
+    opacity: 0,
+    xPercent: "random([-100, 100])",
+    stagger: 0.15,
+    ease: "sine.inOut",
+    scrollTrigger: {
+        trigger: h2Ref.current,
+        start: "top 70%",
+        end: "top 50%",
+        scrub: 0.5,
+    }   
+  });
+
+
+    return () => {
+    split.revert(); // Clean up SplitText spans
+  };
+
   }, []);
 
+
   return (
-    <section id='about' className='h-screen relative pt-16'>
+    <section id='about' className='h-screen relative flex flex-col justify-center items-center'>
       <h1 ref={h1Ref} className='text-white-50 text-5xl flex-center font-bold'>About Me</h1> 
 
       <div className='flex flex-col lg:flex-row pt-16  justify-center items-center gap-8 px-10'>
 
         <div className='flex'>
-        <p ref={textRef} className='text-white-50 text-xl lg:text-2xl flex-center px-10 text-balance'>I'm a developer who focuses on creating React.js web applications.
-            Whether it's building a new feature, fixing bugs, or optimizing performance, I strive to deliver high-quality code and user experiences.
+        <p ref={textRef} className='text-white-50 text-xl lg:text-2xl px-10 text-balance text-center whitespace-pre-line'>I'm a developer who focuses on creating React web applications.
+            Whether it's building a new feature, fixing bugs, or optimizing performance. I strive to deliver high-quality code and user experiences.
         </p>
         </div>
 

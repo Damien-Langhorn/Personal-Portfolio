@@ -34,3 +34,34 @@ section {
   width: 90vw;
   height: 56px;
 }
+
+.split-text-word {
+  margin-right: 0.2em;
+  display: inline-block;
+}
+
+.split-text-char {
+  display: inline-block;
+  white-space: pre;
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+.hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-white-50);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}

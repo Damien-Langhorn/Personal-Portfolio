@@ -1,12 +1,12 @@
 import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-    
+import SplitText from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 // ScrollSmoother requires ScrollTrigger
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 
-gsap.registerPlugin(useGSAP,ScrollTrigger,ScrollSmoother);
+gsap.registerPlugin(useGSAP,ScrollTrigger,ScrollSmoother,SplitText);
 
 
 const Project = () => {
@@ -16,57 +16,60 @@ const Project = () => {
     const project3Ref = useRef();
 
     useGSAP(() => {
-        gsap.from(h1Ref.current, {
-            opacity: 0,
-            scale: 0.1,
-            duration: 1,
-            ease: "power4.Out",
-            scrollTrigger: {
-                trigger: h1Ref.current,
-                start: "top 80%",
+        const split = new SplitText(h1Ref.current, { type: "words", wordsClass: "split-text-word" });
+        gsap.fromTo(
+            split.words,
+            { y: 100, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                ease: "sine.inOut",
+                scrollTrigger: {
+                    trigger: h1Ref.current,
+                    start: "top 80%",
+                    end: "top 30%",
+                    scrub: 0.5,
+                }   
             }
-        });
+        );
 
-        gsap.from(project1Ref.current, {
-            opacity: 0,
-            scale: 0.1,
-            duration: 1,
-            delay: 0.5,
-            ease: "power4.Out",
-            scrollTrigger: {
-                trigger: h1Ref.current,
-                start: "top 80%",
+        [project1Ref, project2Ref, project3Ref].forEach((ref) => {
+        gsap.fromTo(
+        ref.current,
+            { opacity: 0,
+                 y: 100, 
+                 scale: 0,
+                 rotationX: "180",
+                 rotationY: "45",
+                 rotationZ: "100",},
+            {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                rotationX: 0,
+                rotationY: 0,
+                rotationZ: 0,
+                autoAlpha: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: ref.current,
+                    start: "top 100%",
+                    end: "top 85%",
+                    scrub: 0.5,
+                }
             }
-        });
+        );
+    });
 
-        gsap.from(project2Ref.current, {
-            opacity: 0,
-            scale: 0.1,
-            duration: 1,
-            delay: 0.7,
-            ease: "power4.Out",
-            scrollTrigger: {
-                trigger: h1Ref.current,
-                start: "top 80%",
-            }
-        });
-
-        gsap.from(project3Ref.current, {
-            opacity: 0,
-            scale: 0.1,
-            duration: 1,
-            delay: 0.9,
-            ease: "power4.Out",
-            scrollTrigger: {
-                trigger: h1Ref.current,
-                start: "top 80%",
-            }
-        });
+    return () => {
+        split.revert(); // Clean up SplitText spans
+    };
+    
     }, []);
 
   return (
-    <section id='project' className='relative pt-16'>
-        <h1 ref={h1Ref} className='flex-center text-5xl font-bold text-white-50'>See My Work!</h1>
+    <section id='project' className='relative pt-32'>
+        <h1 ref={h1Ref} className='flex-center text-5xl font-bold text-white-50 whitespace-pre-line'>See My Work!</h1>
         <div className='flex flex-col lg:flex-row gap-8 h-full m-auto px-8 lg:px-16 py-8 lg:py-16'>
 
             {/*Featured Project, Left side of screen */}
@@ -85,7 +88,10 @@ const Project = () => {
                         intened with some desgin changes as I saw fit.
                     </p>
                     <div className="card-actions justify-end">
-                        <button className="btn bg-white-50 text-black-50">See More</button>
+                        <a href="https://innovativetechcompany.netlify.app/"
+                           target="_blank"
+                           rel="noopener noreferrer" 
+                           className="btn bg-white-50 text-black-50 hover:bg-black-100 hover:text-white-50">See More</a>
                     </div>
                 </div>
             </div>
@@ -98,12 +104,12 @@ const Project = () => {
                 <figure>
                     <img
                     className='w-full h-full object-cover object-top'
-                    src="/Project-1.png"
+                    src="/Placeholder.jpg"
                     alt="Project 2"/>
                 </figure>
                 <div className="card-body">
-                    <h2 className="card-title">Card Title</h2>
-                    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                    <h2 hidden className="card-title">Card Title</h2>
+                    <p hidden>A card component has a figure, a body part, and inside body there are title and actions parts</p>
                     <div className="card-actions justify-end">
                         <button disabled className="btn bg-white-50 text-black-50">See More</button>
                     </div>
@@ -114,12 +120,12 @@ const Project = () => {
                 <figure>
                     <img
                     className='w-full h-full object-cover object-top'
-                    src="/Project-1.png"
+                    src="/Placeholder.jpg"
                     alt="Project 3"/>
                 </figure>
                 <div className="card-body">
-                    <h2 className="card-title">Card Title</h2>
-                    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                    <h2 hidden className="card-title">Card Title</h2>
+                    <p hidden>A card component has a figure, a body part, and inside body there are title and actions parts</p>
                     <div className="card-actions justify-end">
                         <button disabled className="btn bg-white-50 text-black-50">See More</button>
                     </div>
