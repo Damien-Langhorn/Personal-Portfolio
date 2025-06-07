@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useState, useRef} from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { gsap } from "gsap";

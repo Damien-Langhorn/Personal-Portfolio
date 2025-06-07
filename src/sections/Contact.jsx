@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { FaLinkedin, FaGithub,  } from "react-icons/fa"
 import { useRef, useState } from "react";
 import { gsap } from "gsap";

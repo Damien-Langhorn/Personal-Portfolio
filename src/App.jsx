@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import Navbar from "./components/Navbar"
 import About from "./sections/About"
 import Contact from "./sections/Contact"

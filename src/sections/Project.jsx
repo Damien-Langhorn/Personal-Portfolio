@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
