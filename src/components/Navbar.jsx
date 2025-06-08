@@ -20,7 +20,7 @@ const Navbar = () => {
       stagger: 0.07,
       delay: 2,
     });
-  }, []);
+  });
 
 
 const [menuOpen, setMenuOpen] = useState(false);

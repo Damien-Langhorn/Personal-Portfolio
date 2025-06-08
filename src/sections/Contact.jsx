@@ -21,57 +21,84 @@ const Contact = () => {
 
 
   useGSAP(() => {
-  gsap.from(h1Ref.current, {
-    y: 100,
+
+  gsap.fromTo(h1Ref.current, {
+    yPercent: 100,
     opacity: 0,
     scale: 0.1,
+  },
+  {
+    yPercent: 0,
+    opacity: 1,
+    scale: 1,
     ease: "sine.inOut",
     scrollTrigger: {
         trigger: h1Ref.current,
-        start: "top 95%",
+        start: "top 80%",
         end: "top 60%",
         scrub: 0.5,
     }
-  })
+  }
+);
 
-  gsap.from(formRef.current, {
-    y: 100,
+  gsap.fromTo(formRef.current, {
+    yPercent: 100,
     opacity: 0,
     scale: 0.1,
+  },
+  {
+    yPercent: 0,
+    opacity: 1,
+    scale: 1,
     ease: "sine.inOut",
     scrollTrigger: {
         trigger: h1Ref.current,
-        start: "top 85%",
-        end: "top 60%",
+        start: "top 70%",
+        end: "top 50%",
         scrub: 0.5,
     }
-  })
+  }
+);
 
-  gsap.from(icon1Ref.current, {
-    x: -100,
+  gsap.fromTo(icon1Ref.current, {
+    xPercent: -100,
     opacity: 0,
     scale: 0.1,
+  },
+  {
+    xPercent: 0,
+    opacity: 1,
+    scale: 1,
     ease: "sine.inOut",
     scrollTrigger: {
         trigger: h1Ref.current,
-        start: "top 45%",
-        end: "top 40%",
+        start: "top 60%",
+        end: "top 30%",
         scrub: 0.5,
     }
-  })
+  }
+);
 
-  gsap.from(icon2Ref.current, {
-    x: 100,
+  gsap.fromTo(icon2Ref.current, {
+    xPercent: 100,
     opacity: 0,
     scale: 0.1,
+  },
+  {
+    xPercent: 0,
+    opacity: 1,
+    scale: 1,
     ease: "sine.inOut",
     scrollTrigger: {
         trigger: h1Ref.current,
-        start: "top 45%",
-        end: "top 40%",
+        start: "top 60%",
+        end: "top 30%",
         scrub: 0.5,
     }
-  });
+  }
+);
+
+ScrollTrigger.refresh(true);
 
 }, []);
 

@@ -20,18 +20,14 @@ const Hero = () => {
      const split = new SplitText(h1Ref.current, { type: "chars" });
      const split2 = new SplitText(textRef.current, { type: "chars", smartWrap:true });
      
-
-     gsap.context(() => {
-
      gsap.from(split.chars, { 
-      x: 100,
-      y: -100,
+      xPercent: 100,
+      yPercent: -100,
       rotation: "random([-30, 30])",
       ease: "sine.in",
       autoAlpha: 0,
       stagger: {
         amount: 1,
-        
       }
       });
 
@@ -62,7 +58,7 @@ const Hero = () => {
         split.revert(); // Clean up SplitText spans
       };
 
-    })
+    
 
   }, []);
 
@@ -74,13 +70,12 @@ const Hero = () => {
   return (
     <section id='home' className='h-screen flex flex-col justify-center items-center overflow-hidden'>
         <video 
-      
         fetchPriority='high'
         src="/Hero-Vid.mp4" 
         autoPlay 
         loop 
         muted 
-        className='fixed top-0 left-0 w-full h-full object-cover z-0 pointer-events-none scroll-0'/>
+        className='fixed top-0 left-0 w-full h-full object-cover z-0 pointer-events-none'/>
         <div className="fixed top-0 left-0 w-full h-full bg-black/50 z-0"></div>
         <div className="hero bg-base-200 min-h-screen">
           <div className="hero-content flex-col lg:flex-row-reverse px-10 pt-20 sm:pt-0">

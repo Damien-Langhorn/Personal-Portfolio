@@ -17,7 +17,7 @@ const About = () => {
   const h2Ref = useRef();
   const techStackRef = useRef([]);
 
-  useGSAP(() => {
+  useGSAP(() =>  {
     const split = new SplitText(textRef.current, {
     type: "chars",
     smartWrap: true,
@@ -27,24 +27,36 @@ const About = () => {
   });
 
   
-
-  gsap.from(h1Ref.current, {
-    y: 100,
+    gsap.fromTo(h1Ref.current, {
+    yPercent: 100,
     opacity: 0,
     scale: 0.1,
-    ease: "sine.inOut",
-    scrollTrigger: {
+    autoAlpha: 0,
+    },
+    {
+      yPercent: 0,
+      opacity: 1,
+      scale: 1,
+      autoAlpha: 1,
+      ease: "sine.inOut",
+      scrollTrigger: {
         trigger: h1Ref.current,
-        start: "top 95%",
+        start: "top 80%",
         end: "top 60%",
         scrub: 0.5,
-    }   
-  })
+      }   
+    }
+  );
 
-  gsap.from(split.chars, {
+  gsap.fromTo(split.chars, {
     yPercent: "random([-100, 100])",
     rotation: "random(-30, 30)",
     autoAlpha: 0,
+  },
+  {
+    yPercent: 0,
+    rotation: 0,
+    autoAlpha: 1,
     ease: "sine.inOut",
     stagger: {
       amount: 0.5,
@@ -52,51 +64,64 @@ const About = () => {
     },
     scrollTrigger: {
         trigger: textRef.current,
-        start: "top 70%",
+        start: "top 80%",
         end: "top 60%",
         scrub: 0.5,
     }   
-  })
+  }
+);
 
-  gsap.from(h2Ref.current, {
-    y: 100,
+  gsap.fromTo(h2Ref.current, {
+    yPercent: 100,
     opacity: 0,
     scale: 0.1,
+    autoAlpha: 0,
+  },
+  {
+    yPercent: 0,
+    opacity: 1,
+    scale: 1,
+    autoAlpha: 1,
     ease: "power2.inOut",
-    delay: 0.5,
-    duration: 1,
-    scrollTrigger: {
-        trigger: h2Ref.current,
-        start: "top 95%",
-        end: "top 60%",
-        scrub: 0.5,
-    }   
-  })
-  gsap.from(techStackRef.current, {
-    opacity: 0,
-    xPercent: "random([-100, 100])",
-    stagger: 0.15,
-    ease: "sine.inOut",
     scrollTrigger: {
         trigger: h2Ref.current,
         start: "top 70%",
-        end: "top 55%",
+        end: "top 50%",
         scrub: 0.5,
     }   
-  });
-
-    ScrollTrigger.refresh();
+  }
+);
     
-    return () => {
-    split.revert(); // Clean up SplitText spans
-  };
+
+  gsap.fromTo(techStackRef.current, {
+    opacity: 0,
+    xPercent: "random([-100, 100])",
+    autoAlpha: 0,
+  },
+  {
+    opacity: 1,
+    xPercent: "0",
+    autoAlpha: 1,
+    stagger: 0.15,
+    ease: "power4.inOut",
+    scrollTrigger: {
+        trigger: techStackRef.current,
+        start: "top 60%",
+        end: "top 40%",
+        scrub: 0.5,
+    }   
+  }
+);
+
+    ScrollTrigger.refresh(true);
+    
 
   }, []);
 
 
   return (
     <section id='about' className='h-screen relative flex flex-col justify-center items-center overflow-hidden'>
-      <h1 ref={h1Ref} className='text-white-50 text-5xl flex-center font-bold'>About Me</h1> 
+      <h1 ref={h1Ref} className='text-white-50 text-5xl flex-center font-bold pt-10'>About Me</h1> 
 
       <div className='flex flex-col lg:flex-row pt-16  justify-center items-center gap-8 px-10'>
 

@@ -15,57 +15,124 @@ const Project = () => {
     const project1Ref = useRef();
     const project2Ref = useRef();
     const project3Ref = useRef();
+    
 
     useGSAP(() => {
         const split = new SplitText(h1Ref.current, { type: "words", wordsClass: "split-text-word" });
         
-        gsap.from(split.words, {
-            y: 100,
+        gsap.fromTo(split.words, {
+            yPercent: "random( -100, 100)",
             opacity: 0,
-            ease: "sine.inOut",
+            autoAlpha: 0,
+            },
+            {
+                yPercent: 0,
+                opacity: 1,
+                autoAlpha:1,                
+                ease: "sine.inOut",
                 scrollTrigger: {
                     trigger: h1Ref.current,
                     start: "top 80%",
-                    end: "top 30%",
-                    scrub: 0.5,
+                    end: "top 60%",
+                    scrub: 0.5
                 }   
             }
-        
+            
         );
 
-        [project1Ref, project2Ref, project3Ref].forEach((ref) => {
-        gsap.from(ref.current, {
+        
+        gsap.fromTo(project1Ref.current, {
             opacity: 0,
-            y: 100,
+            yPercent: 30,
             scale: 0,
             rotationX: "180",
             rotationY: '45',
             rotationZ: "100",
+            autoAlpha: 0,
+            },
+            {
+            opacity: 1,
+            yPercent:0,
+            scale: 1,
+            rotationX: "0",
+            rotationY: "0",
+            rotationZ: "0",
             autoAlpha: 1,
             ease: "power2.out",
             scrollTrigger: {
-                trigger: ref.current,
-                start: "top 80%",
+                trigger: project1Ref.current,
+                start: "top 100%",
                 end: "top 80%",
                 scrub: 0.5,
                 }
             }
         );
 
-        
-    });
+        gsap.fromTo(project2Ref.current, {
+            opacity: 0,
+            yPercent: 30,
+            scale: 0,
+            rotationX: "180",
+            rotationY: '45',
+            rotationZ: "100",
+            autoAlpha: 0,
+            },
+            {
+            opacity: 1,
+            yPercent: 0,
+            scale: 1,
+            rotationX: "0",
+            rotationY: "0",
+            rotationZ: "0",
+            autoAlpha: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: project2Ref.current,
+                start: "top 85%",
+                end: "top 65%",
+                scrub: 0.5,
+                }
+            }
+        );
 
-    ScrollTrigger.refresh();
+        gsap.fromTo(project3Ref.current, {
+            opacity: 0,
+            yPercent: 30,
+            scale: 0,
+            rotationX: "180",
+            rotationY: '45',
+            rotationZ: "100",
+            autoAlpha: 0,
+            },
+            {
+            opacity: 1,
+            yPercent: 0,
+            scale: 1,
+            rotationX: "0",
+            rotationY: "0",
+            rotationZ: "0",
+            autoAlpha: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: project3Ref.current,
+                start: "top 90%",
+                end: "top 70%",
+                scrub: 0.5,
+                }
+            }
+        );
 
-    return () => {
-        split.revert(); // Clean up SplitText spans
-    };
+        ScrollTrigger.refresh(true);
+
+        return () => { 
+            split.revert(); // Clean up SplitText spans
+        };
 
     
     }, []);
 
   return (
-    <section id='project' className='relative pt-32 flex flex-col justify-center items-center overflow-hidden'>
+    <section id='project' className='h-full relative pt-32 flex flex-col justify-center items-center overflow-hidden'>
         <h1 ref={h1Ref} className='flex-center text-5xl font-bold text-white-50 whitespace-pre-line'>See My Work!</h1>
         <div className='flex flex-col lg:flex-row gap-8 h-full m-auto px-8 lg:px-16 py-8 lg:py-16'>
 
@@ -131,7 +198,7 @@ const Project = () => {
                     </div>
                 </div>
             </div>
-        </div>
+         </div>
 
         </div>
            
