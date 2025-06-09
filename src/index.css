@@ -6,7 +6,6 @@ body {
   width: 100dvw;
   height: 100dvh;
   scroll-behavior: smooth;
-  background-attachment: scroll;
 }
 
 section {

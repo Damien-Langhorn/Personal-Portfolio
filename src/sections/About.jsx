@@ -18,6 +18,9 @@ const About = () => {
   const techStackRef = useRef([]);
 
   useGSAP(() =>  {
+
+    ScrollTrigger.refresh(true);
+
     const split = new SplitText(textRef.current, {
     type: "chars",
     smartWrap: true,
@@ -42,7 +45,7 @@ const About = () => {
       scrollTrigger: {
         trigger: h1Ref.current,
         start: "top 80%",
-        end: "top 60%",
+        end: "top 70%",
         scrub: 0.5,
       }   
     }
@@ -65,7 +68,7 @@ const About = () => {
     scrollTrigger: {
         trigger: textRef.current,
         start: "top 80%",
-        end: "top 60%",
+        end: "top 70%",
         scrub: 0.5,
     }   
   }
@@ -86,7 +89,7 @@ const About = () => {
     scrollTrigger: {
         trigger: h2Ref.current,
         start: "top 70%",
-        end: "top 50%",
+        end: "top 60%",
         scrub: 0.5,
     }   
   }
@@ -107,20 +110,18 @@ const About = () => {
     scrollTrigger: {
         trigger: techStackRef.current,
         start: "top 60%",
-        end: "top 40%",
+        end: "top 50%",
         scrub: 0.5,
     }   
   }
 );
 
-    ScrollTrigger.refresh(true);
-    
 
   }, []);
 
 
   return (
-    <section id='about' className='h-screen relative flex flex-col justify-center items-center overflow-hidden'>
+    <section id='about' className='h-screen relative flex flex-col justify-center items-center overflow-hidden '>
       <h1 ref={h1Ref} className='text-white-50 text-5xl flex-center font-bold pt-10'>About Me</h1> 
 
       <div className='flex flex-col lg:flex-row pt-16  justify-center items-center gap-8 px-10'>
@@ -145,7 +146,7 @@ const About = () => {
               ref={el => techStackRef.current[i] = el}
               className="badge bg-black-50 border-black-50 h-15 w-full sm:w-[50vw] text-2xl text-white-50 flex items-center gap-2"
             >
-              <img loading="lazy" className="size-[2em]" src={tech.src} alt={`${tech.label} Icon`} />
+              <img className="size-[2em]" src={tech.src} alt={`${tech.label} Icon`} />
               {tech.label}
               </div>
           ))}

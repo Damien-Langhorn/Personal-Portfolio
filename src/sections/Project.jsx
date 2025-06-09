@@ -16,8 +16,10 @@ const Project = () => {
     const project2Ref = useRef();
     const project3Ref = useRef();
     
-
     useGSAP(() => {
+
+        ScrollTrigger.refresh(true);
+
         const split = new SplitText(h1Ref.current, { type: "words", wordsClass: "split-text-word" });
         
         gsap.fromTo(split.words, {
@@ -33,7 +35,7 @@ const Project = () => {
                 scrollTrigger: {
                     trigger: h1Ref.current,
                     start: "top 80%",
-                    end: "top 60%",
+                    end: "top 70%",
                     scrub: 0.5
                 }   
             }
@@ -89,7 +91,7 @@ const Project = () => {
             scrollTrigger: {
                 trigger: project2Ref.current,
                 start: "top 85%",
-                end: "top 65%",
+                end: "top 75%",
                 scrub: 0.5,
                 }
             }
@@ -122,17 +124,15 @@ const Project = () => {
             }
         );
 
-        ScrollTrigger.refresh(true);
 
         return () => { 
             split.revert(); // Clean up SplitText spans
         };
-
     
     }, []);
 
   return (
-    <section id='project' className='h-full relative pt-32 flex flex-col justify-center items-center overflow-hidden'>
+    <section id='project' className='h-full  pt-32 flex flex-col justify-center items-center overflow-x-hidden'>
         <h1 ref={h1Ref} className='flex-center text-5xl font-bold text-white-50 whitespace-pre-line'>See My Work!</h1>
         <div className='flex flex-col lg:flex-row gap-8 h-full m-auto px-8 lg:px-16 py-8 lg:py-16'>
 
@@ -141,7 +141,6 @@ const Project = () => {
             <div ref={project1Ref} className="card bg-black-50 w-full lg:h-[70vh] mt-10">
                 <figure>
                     <img
-                    loading="lazy"
                     className='w-full h-full object-cover object-top'
                     src="/Project-1.png"
                     alt="Featured Project" />
@@ -168,7 +167,6 @@ const Project = () => {
             <div ref={project2Ref} className="pointer-events-none card bg-black-50 w-full lg:w-[40vw] lg:h-[60vh]">
                 <figure>
                     <img
-                    loading="lazy"
                     className='w-full h-full object-cover object-top'
                     src="/Placeholder.jpg"
                     alt="Project 2"/>
@@ -185,7 +183,6 @@ const Project = () => {
             <div ref={project3Ref} className="pointer-events-none card bg-black-50 w-full lg:w-[40vw] lg:h-[60vh]">
                 <figure>
                     <img
-                    loading='lazy'
                     className='w-full h-full object-cover object-top'
                     src="/Placeholder.jpg"
                     alt="Project 3"/>

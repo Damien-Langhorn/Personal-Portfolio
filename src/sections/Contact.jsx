@@ -22,6 +22,8 @@ const Contact = () => {
 
   useGSAP(() => {
 
+  ScrollTrigger.refresh(true);
+
   gsap.fromTo(h1Ref.current, {
     yPercent: 100,
     opacity: 0,
@@ -35,7 +37,7 @@ const Contact = () => {
     scrollTrigger: {
         trigger: h1Ref.current,
         start: "top 80%",
-        end: "top 60%",
+        end: "top 70%",
         scrub: 0.5,
     }
   }
@@ -54,7 +56,7 @@ const Contact = () => {
     scrollTrigger: {
         trigger: h1Ref.current,
         start: "top 70%",
-        end: "top 50%",
+        end: "top 60%",
         scrub: 0.5,
     }
   }
@@ -73,7 +75,7 @@ const Contact = () => {
     scrollTrigger: {
         trigger: h1Ref.current,
         start: "top 60%",
-        end: "top 30%",
+        end: "top 40%",
         scrub: 0.5,
     }
   }
@@ -92,13 +94,11 @@ const Contact = () => {
     scrollTrigger: {
         trigger: h1Ref.current,
         start: "top 60%",
-        end: "top 30%",
+        end: "top 40%",
         scrub: 0.5,
     }
   }
 );
-
-ScrollTrigger.refresh(true);
 
 }, []);
 

@@ -17,6 +17,9 @@ const Hero = () => {
 
   
     useGSAP(() => {
+
+      ScrollTrigger.refresh(true);
+
      const split = new SplitText(h1Ref.current, { type: "chars" });
      const split2 = new SplitText(textRef.current, { type: "chars", smartWrap:true });
      
@@ -70,12 +73,12 @@ const Hero = () => {
   return (
     <section id='home' className='h-screen flex flex-col justify-center items-center overflow-hidden'>
         <video 
-        fetchPriority='high'
+        preload="auto"
         src="/Hero-Vid.mp4" 
         autoPlay 
         loop 
         muted 
-        className='fixed top-0 left-0 w-full h-full object-cover z-0 pointer-events-none'/>
+        className='fixed bg-fixed top-[0.5px] left-0 right-0 bottom-[0.5] w-[100vw] h-[100vh] object-cover z-0 pointer-events-none'/>
         <div className="fixed top-0 left-0 w-full h-full bg-black/50 z-0"></div>
         <div className="hero bg-base-200 min-h-screen">
           <div className="hero-content flex-col lg:flex-row-reverse px-10 pt-20 sm:pt-0">
