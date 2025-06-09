@@ -3,17 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/Logo.png" />
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+        emailjs.init({
+          publicKey: "VITE_APP_EMAILJS_PUBLIC_KEY",
+        });
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>Damien Langhorn</title>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx">
-      (function(){
-      emailjs.init({
-        publicKey: "VITE_APP_EMAILJS_PUBLIC_KEY",
-      });
-   })();
-    </script>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
