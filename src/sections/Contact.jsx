@@ -15,6 +15,7 @@ gsap.registerPlugin(useGSAP,ScrollTrigger,ScrollSmoother,SplitText);
 const Contact = () => {
 
   const h1Ref = useRef();
+  const formCard = useRef();
   const formRef = useRef();
   const icon1Ref = useRef();
   const icon2Ref = useRef();
@@ -43,7 +44,7 @@ const Contact = () => {
   }
 );
 
-  gsap.fromTo(formRef.current, {
+  gsap.fromTo(formCard.current, {
     yPercent: 100,
     opacity: 0,
     scale: 0.1,
@@ -126,19 +127,11 @@ const handleSubmit = async (e) => {
   setLoading(true);
 
   try{
-    await emailjs.send(
+    await emailjs.sendForm(
       import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
       import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-      {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-      },
+      formRef.current,
       import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY,
-    ).then(
-      (response) => {
-        console.log(response.status, response.text)
-      }
     )
     alert('Message sent!');
   } catch (error) {
@@ -155,9 +148,9 @@ const handleSubmit = async (e) => {
     <section id='contact' className='relative h-screen flex flex-col justify-center items-center overflow-hidden'>
       <h1 ref={h1Ref} className='text-white-50 font-bold text-5xl flex-center'>Contact Me</h1>
     
-        <div ref={formRef} className='flex flex-col pt-8 px-8'>
+        <div ref={formCard} className='flex flex-col pt-8 px-8'>
           <div className='bg-black-50 rounded-lg p-4 w-[70vw] max-w-200 m-auto'>
-            <form onSubmit={handleSubmit} autoComplete="on">
+            <form ref={formRef} onSubmit={handleSubmit} autoComplete="on">
               <fieldset className="fieldset">
                 <legend className="fieldset-legend text-white-50">Name</legend>
                 <input autoComplete="name" value={formData.name} onChange={handleChange} name="name" type="text" className="input w-full bg-[#1d232a] text-[#838c93] border-[#838c93]" placeholder="Type here" required />
