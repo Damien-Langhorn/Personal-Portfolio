@@ -161,7 +161,7 @@ const handleSubmit = async (e) => {
                 <input autoComplete="email" value={formData.email} onChange={handleChange} name="email" type="email" className="input w-full bg-[#1d232a] text-[#838c93] border-[#838c93]" placeholder="Type here" required />
                 <legend className="fieldset-legend text-white-50">Send me a message</legend>
                 <textarea autoComplete="off" value={formData.message} onChange={handleChange} name="message" className="textarea h-24 w-full bg-[#1d232a] text-[#838c93] border-[#838c93]" placeholder="Enter here" required></textarea>
-                <button disabled={loading} className='btn bg-white-50 text-black-50 w-[25%] mx-auto mt-2 hover:bg-black-100 hover:text-white-50'>{loading ? 'Sending...' : 'Send'}</button>
+                <button type="submit" disabled={loading} className='btn bg-white-50 text-black-50 w-[25%] mx-auto mt-2 hover:bg-black-100 hover:text-white-50'>{loading ? 'Sending...' : 'Send'}</button>
               </fieldset>
             </form>
           </div>
