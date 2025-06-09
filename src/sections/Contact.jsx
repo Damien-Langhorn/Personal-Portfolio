@@ -134,7 +134,7 @@ const handleSubmit = async (e) => {
         from_email: formData.email,
         message: formData.message,
       },
-      import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+      import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY,
     );
     alert('Message sent!');
   } catch (error) {
