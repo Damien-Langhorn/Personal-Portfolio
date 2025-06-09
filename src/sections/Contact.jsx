@@ -135,7 +135,11 @@ const handleSubmit = async (e) => {
         message: formData.message,
       },
       import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY,
-    );
+    ).then(
+      (response) => {
+        console.log(response.status, response.text)
+      }
+    )
     alert('Message sent!');
   } catch (error) {
     console.log('EMAILJS ERROR:', error);
