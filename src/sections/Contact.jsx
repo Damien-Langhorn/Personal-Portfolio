@@ -123,7 +123,7 @@ const handleChange = (e) => {
 
 emailjs.init({
   publicKey: 'VITE_APP_EMAILJS_PUBLIC_KEY',
-  servieID: 'VITE_APP_EMAILJS_SERVICE_ID',
+  serviceID: 'VITE_APP_EMAILJS_SERVICE_ID',
   templateID: 'VITE_APP_EMAILJS_TEMPLATE_ID',
   // Do not allow headless browsers
   blockHeadless: true,
